@@ -1,4 +1,4 @@
-class Password_check(object):
+class PasswordChecker(object):
     old_correct_passwords = 0
     correct_passwords = 0
 
@@ -10,11 +10,11 @@ class Password_check(object):
 
     def old_psswd_check(self):
         if psswd.count(char) >= i1 and psswd.count(char) <= i2:
-            Password_check.old_correct_passwords += 1
+            PasswordChecker.old_correct_passwords += 1
 
     def psswd_check(self):
         if (psswd[self.i1 - 1] == char) ^ (psswd[self.i2 - 1] == char):
-            Password_check.correct_passwords += 1
+            PasswordChecker.correct_passwords += 1
 
 
 import re
@@ -27,9 +27,9 @@ for s in lines:
     i1, i2, char, psswd = m.groups()
     i1, i2 = int(i1), int(i2)
 
-    PC = Password_check(i1, i2, char, psswd)
+    PC = PasswordChecker(i1, i2, char, psswd)
     PC.old_psswd_check()
     PC.psswd_check()
 
-print(f"question 1 : {Password_check.old_correct_passwords}")
-print(f"question 2 : {Password_check.correct_passwords}")
+print(f"question 1 : {PasswordChecker.old_correct_passwords}")
+print(f"question 2 : {PasswordChecker.correct_passwords}")
